@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>発注処理_R81006.xlsm</title>
+<link rel="stylesheet" href="sheet.css">
+</head>
+<body>
+<div id="app">
+  <div class="menubar">
+    <span>ファイル</span><span>ホーム</span><span>挿入</span><span>ページレイアウト</span><span>数式</span><span>データ</span><span>開発</span>
+  </div>
+  <div class="titlebar">
+    <h1>発注処理・天板並べ表</h1>
+    <div class="file">発注処理_R81006.xlsm　―　試作（マクロ有効ブックの画面確認用）</div>
+  </div>
+  <div class="ribbon">
+    <fieldset>
+      <legend>データ</legend>
+      <button type="button" id="btnSample">サンプル読込</button>
+      <label class="btn">CSV取込<input type="file" id="fileCsv" class="hidden-file" accept=".csv,text/csv"></label>
+      <button type="button" id="btnAdd">行追加</button>
+    </fieldset>
+    <fieldset>
+      <legend>原板（mm）</legend>
+      ヨコ <input type="number" id="boardW" value="2438">
+      タテ <input type="number" id="boardH" value="1219">
+      刃幅 <input type="number" id="kerf" value="3">
+    </fieldset>
+    <fieldset>
+      <legend>マクロ</legend>
+      <button type="button" class="main" id="btnNarabe">並べ表を作る</button>
+      <button type="button" class="main" id="btnSeikyu">請求書を出す</button>
+      <button type="button" class="main" id="btnLabel">ラベル印刷</button>
+      <button type="button" id="btnPrint">このシートを印刷</button>
+    </fieldset>
+  </div>
+  <div class="formula">
+    <div class="fx">fx</div>
+    <div class="cellname" id="cellName">A1</div>
+    <div class="val" id="cellVal">発注一覧</div>
+  </div>
+  <div class="note">前回（松屋・5営業所）の発注イメージで動かしています。社名・振込先・単価はダミー。原板は4×8尺（2438×1219）仮置き。</div>
+  <div class="stage">
+    <div class="sheet on" id="sheetHatchu">
+      <table class="grid" id="tblHatchu"></table>
+    </div>
+    <div class="sheet" id="sheetNarabe">
+      <div class="boards" id="narabeOut"></div>
+    </div>
+    <div class="sheet" id="sheetSeikyu">
+      <div id="seikyuOut"></div>
+    </div>
+    <div class="sheet" id="sheetLabel">
+      <div class="labels" id="labelOut"></div>
+    </div>
+    <div class="sheet" id="sheetMaster">
+      <table class="grid" id="tblMaster"></table>
+    </div>
+  </div>
+  <div class="tabs">
+    <button type="button" class="on" data-sheet="sheetHatchu">発注一覧</button>
+    <button type="button" data-sheet="sheetNarabe">並べ表</button>
+    <button type="button" data-sheet="sheetSeikyu">請求書</button>
+    <button type="button" data-sheet="sheetLabel">ラベル台</button>
+    <button type="button" data-sheet="sheetMaster">単価マスタ</button>
+  </div>
+  <div class="status">
+    <span id="statLeft">準備完了</span>
+    <span id="statRight">平均 100%　日本語</span>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

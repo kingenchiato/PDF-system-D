@@ -1,0 +1,270 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #e5e5e5;
+  color: #222;
+  font-family: "Meiryo UI", "Yu Gothic UI", Meiryo, sans-serif;
+  font-size: 12px;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+.menubar {
+  background: #217346;
+  color: #fff;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+.menubar span + span { margin-left: 18px; opacity: 0.92; }
+.titlebar {
+  background: #217346;
+  color: #fff;
+  padding: 2px 12px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.titlebar h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.titlebar .file {
+  font-size: 12px;
+  opacity: 0.95;
+}
+.ribbon {
+  background: #f3f3f3;
+  border-bottom: 1px solid #c6c6c6;
+  padding: 8px 10px 6px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.ribbon fieldset {
+  border: 1px solid #cfcfcf;
+  background: #fafafa;
+  margin: 0;
+  padding: 4px 8px 6px;
+}
+.ribbon legend {
+  font-size: 10px;
+  color: #666;
+  padding: 0 4px;
+}
+.ribbon button, .ribbon label.btn {
+  background: #fff;
+  border: 1px solid #adadad;
+  padding: 4px 10px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-block;
+}
+.ribbon button:hover, .ribbon label.btn:hover { background: #e7f4ea; border-color: #217346; }
+.ribbon button.main { background: #217346; color: #fff; border-color: #1a5c38; }
+.ribbon button.main:hover { background: #1a5c38; }
+.ribbon input[type="number"] {
+  width: 64px;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 2px 4px;
+}
+.formula {
+  background: #fff;
+  border-bottom: 1px solid #c6c6c6;
+  display: flex;
+  align-items: center;
+  height: 24px;
+  font-size: 11px;
+}
+.formula .fx {
+  width: 28px;
+  text-align: center;
+  color: #888;
+  border-right: 1px solid #ddd;
+}
+.formula .cellname {
+  width: 70px;
+  padding: 0 6px;
+  border-right: 1px solid #ddd;
+}
+.formula .val {
+  padding: 0 8px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.stage {
+  flex: 1;
+  overflow: auto;
+  background: #c8c8c8;
+  padding: 12px 12px 36px;
+}
+.sheet {
+  display: none;
+  background: #fff;
+  min-height: 480px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.18);
+}
+.sheet.on { display: block; }
+table.grid {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 1100px;
+}
+table.grid th, table.grid td {
+  border: 1px solid #d0d7de;
+  padding: 2px 5px;
+  font-size: 11px;
+  height: 20px;
+}
+table.grid th {
+  background: #f0f0f0;
+  font-weight: 600;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+table.grid td.n { text-align: right; font-variant-numeric: tabular-nums; }
+table.grid tr:nth-child(even) td { background: #f7faf8; }
+table.grid tr:hover td { background: #fff8d5; }
+table.grid td[contenteditable] { outline: none; }
+table.grid td[contenteditable]:focus { background: #fff; box-shadow: inset 0 0 0 2px #217346; }
+.tabs {
+  background: #e6e6e6;
+  border-top: 1px solid #b9b9b9;
+  height: 26px;
+  display: flex;
+  align-items: stretch;
+  padding-left: 24px;
+}
+.tabs button {
+  border: 1px solid transparent;
+  border-bottom: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 11px;
+  padding: 0 14px;
+  cursor: pointer;
+  color: #444;
+}
+.tabs button.on {
+  background: #fff;
+  border-color: #b9b9b9;
+  border-top: 2px solid #217346;
+  font-weight: 600;
+}
+.status {
+  background: #217346;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.note {
+  padding: 8px 12px;
+  background: #fffbe6;
+  border-bottom: 1px solid #ead99a;
+  font-size: 11px;
+  color: #5c4b00;
+}
+.boards {
+  padding: 12px 16px 24px;
+}
+.board-wrap {
+  margin-bottom: 18px;
+}
+.board-wrap h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.svg-board {
+  background: #f4f1ea;
+  border: 1px solid #8a8678;
+}
+.piece {
+  stroke: #333;
+  stroke-width: 0.8;
+}
+.piece txt, .plabel {
+  font-size: 11px;
+  font-family: "Meiryo UI", sans-serif;
+  pointer-events: none;
+}
+.toku {
+  margin: 12px 16px;
+  border: 1px dashed #a33;
+  padding: 8px 10px;
+  background: #fff5f5;
+}
+.invoice {
+  width: 720px;
+  margin: 16px auto 32px;
+  padding: 24px 28px 40px;
+  background: #fff;
+  color: #111;
+}
+.invoice .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid #111;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+.invoice h2 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 0.4em;
+  font-weight: 700;
+}
+.invoice .meta { font-size: 12px; text-align: right; line-height: 1.6; }
+.invoice .to { font-size: 16px; margin: 8px 0 18px; }
+.invoice .to .name { font-size: 20px; border-bottom: 1px solid #111; padding: 0 8px 2px; }
+.invoice table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.invoice th, .invoice td {
+  border: 1px solid #333;
+  padding: 4px 6px;
+  font-size: 11px;
+}
+.invoice th { background: #f2f2f2; }
+.invoice .sum { width: 280px; margin-left: auto; margin-top: 12px; }
+.invoice .from { margin-top: 22px; font-size: 12px; line-height: 1.7; }
+.labels {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.label {
+  border: 1px solid #222;
+  padding: 8px 10px 6px;
+  min-height: 92px;
+  page-break-inside: avoid;
+}
+.label .s { font-size: 10px; color: #444; }
+.label .store { font-size: 14px; font-weight: 700; }
+.label .size { font-size: 13px; margin: 2px 0; }
+.label canvas { width: 100%; height: 36px; }
+.warn { color: #a40000; }
+.hidden-file { display: none; }
+@media print {
+  .menubar, .titlebar, .ribbon, .formula, .tabs, .status, .note { display: none !important; }
+  body, #app, .stage { background: #fff; height: auto; }
+  .stage { overflow: visible; padding: 0; }
+  .sheet { box-shadow: none; display: none !important; }
+  .sheet.on { display: block !important; }
+}
