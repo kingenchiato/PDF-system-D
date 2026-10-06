@@ -12,6 +12,16 @@ Sub ボタン_ラベル()
     Call ラベルを作る
 End Sub
 
+Sub ボタン_PDF取込()
+    Call PDFから取込
+End Sub
+
+Sub ボタン_一括()
+    Call 並べ表を作る
+    Call 請求書を出す
+    Call ラベルを作る
+End Sub
+
 ' 起動時に計算を手動へはしない。現場は自動のまま。
 Sub Auto_Open()
     ' なにもしない。誤って上書きしないため空

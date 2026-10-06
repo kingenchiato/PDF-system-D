@@ -51,9 +51,23 @@ EH:
     MsgBox "ラベルでエラー: " & Err.Description, vbCritical
 End Sub
 
-' PDFをAdobeで開いてテキストコピー → 発注一覧へ（暫定）
-' 本番は帳票レイアウト確定後に座標指定で取ります
+' PDF取込（本番用の入口）
+' 前回の5営業所レイアウトが揃い次第、座標→発注一覧へ落とし込みます。
+' 試作画面の「PDF取込（デモ）」と同じ操作感にします。
+Public Sub PDFから取込()
+    Dim folder As String
+    On Error Resume Next
+    folder = ThisWorkbook.Path & "\PDF"
+    On Error GoTo 0
+    
+    MsgBox "PDF取込は前回のレイアウト（営業所ヘッダ＋明細）が揃ってから座標を打ちます。" & vbCrLf & vbCrLf & _
+           "想定フォルダ例：" & folder & vbCrLf & _
+           "　261006京都（松屋）.pdf" & vbCrLf & _
+           "　261006奈良（松屋）.pdf … ほか3ファイル" & vbCrLf & vbCrLf & _
+           "今はCSV/手貼りで発注一覧へ入れて、並べ〜請求〜ラベルまで回してください。", vbInformation
+End Sub
+
+' 旧名互換
 Public Sub PDFから仮取込()
-    MsgBox "PDF取込は前回のレイアウト（営業所ヘッダ＋明細）が揃ってから座標を打ちます。" & vbCrLf & _
-           "今はCSV/手貼りで発注一覧へ入れて、並べ〜請求まで回してください。", vbInformation
+    Call PDFから取込
 End Sub

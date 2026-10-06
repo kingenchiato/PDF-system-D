@@ -18,6 +18,7 @@
   <div class="ribbon">
     <fieldset>
       <legend>データ</legend>
+      <button type="button" id="btnPdf" class="main">PDF取込（デモ）</button>
       <button type="button" id="btnSample">サンプル読込</button>
       <label class="btn">CSV取込<input type="file" id="fileCsv" class="hidden-file" accept=".csv,text/csv"></label>
       <button type="button" id="btnAdd">行追加</button>
@@ -33,6 +34,7 @@
       <button type="button" class="main" id="btnNarabe">並べ表を作る</button>
       <button type="button" class="main" id="btnSeikyu">請求書を出す</button>
       <button type="button" class="main" id="btnLabel">ラベル印刷</button>
+      <button type="button" id="btnAll">一括（並べ→請求→ラベル）</button>
       <button type="button" id="btnPrint">このシートを印刷</button>
     </fieldset>
   </div>
@@ -41,7 +43,7 @@
     <div class="cellname" id="cellName">A1</div>
     <div class="val" id="cellVal">発注一覧</div>
   </div>
-  <div class="note">前回（松屋・5営業所）の発注イメージで動かしています。社名・振込先・単価はダミー。原板は4×8尺（2438×1219）仮置き。</div>
+  <div class="note" id="topNote">前回（松屋・5営業所）の発注イメージで動かしています。社名・振込先・単価はダミー。原板は4×8尺（2438×1219）仮置き。　→　まず「PDF取込（デモ）」か「並べ表を作る」を押してください。</div>
   <div class="stage">
     <div class="sheet on" id="sheetHatchu">
       <table class="grid" id="tblHatchu"></table>
@@ -58,6 +60,9 @@
     <div class="sheet" id="sheetMaster">
       <table class="grid" id="tblMaster"></table>
     </div>
+    <div class="sheet" id="sheetSet">
+      <table class="grid" id="tblSet"></table>
+    </div>
   </div>
   <div class="tabs">
     <button type="button" class="on" data-sheet="sheetHatchu">発注一覧</button>
@@ -65,12 +70,28 @@
     <button type="button" data-sheet="sheetSeikyu">請求書</button>
     <button type="button" data-sheet="sheetLabel">ラベル台</button>
     <button type="button" data-sheet="sheetMaster">単価マスタ</button>
+    <button type="button" data-sheet="sheetSet">設定</button>
   </div>
   <div class="status">
     <span id="statLeft">準備完了</span>
     <span id="statRight">平均 100%　日本語</span>
   </div>
 </div>
+
+<div id="pdfModal" class="modal" hidden>
+  <div class="modal-box">
+    <div class="modal-head">PDF発注書取込　（デモ）</div>
+    <p class="modal-sub">本番はフォルダ指定→Adobe/OCR経由、または座標指定でセルへ落とします。<br>ここでは前回と同じ5営業所のファイル名で流れだけ再現しています。</p>
+    <ul id="pdfList" class="pdf-list"></ul>
+    <div class="prog"><div id="pdfBar"></div></div>
+    <div id="pdfMsg" class="modal-msg">待機中…</div>
+    <div class="modal-actions">
+      <button type="button" id="pdfStart">取込開始</button>
+      <button type="button" id="pdfClose">閉じる</button>
+    </div>
+  </div>
+</div>
+
 <script src="app.js"></script>
 </body>
 </html>
